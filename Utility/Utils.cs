@@ -7,59 +7,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-//using UniRx;
 
-//using Zenject;
-
-namespace Utility
+namespace SmallStuff
 {
     public static class Utils
     {
-        public static System.Random Random = new System.Random();
-    
-    
-        // public static  T GetFromSceneContext<T>() where T : class 
-        // {
-        //     var source = ProjectContext.Instance.Container
-        //         .Resolve<SceneContextRegistry>().SceneContexts;
-        //     if (source is IList<SceneContext> sourceList)
-        //     {
-        //         switch (sourceList.Count)
-        //         {
-        //             case 0:
-        //                 return null;
-        //             case 1:
-        //                 return sourceList[0].Container
-        //                     .Resolve<T>();
-        //         }
-        //     }
-        //     else
-        //     {
-        //         using (IEnumerator<SceneContext> enumerator = source.GetEnumerator())
-        //         {
-        //             if (!enumerator.MoveNext())
-        //                 return null;
-        //             SceneContext current = enumerator.Current;
-        //             if (!enumerator.MoveNext())
-        //                 return current.Container
-        //                     .Resolve<T>();;
-        //         }
-        //     }
-        //     return null;
-        // }
-        //
-        // public static IDisposable SubscribeToText(this System.IObservable<string> source, TextMeshProUGUI text)
-        // {
-        //     return source.SubscribeWithState(text, (x, t) => t.text = x);
-        // }
-        //
-        // public static IDisposable SubscribeToText<T>(this System.IObservable<T> source, TextMeshProUGUI text)
-        // {
-        //     return source.SubscribeWithState(text, (x, t) => t.text = x.ToString());
-        // }
-        //
-    
-        public static Vector3 RandomPointInBounds(Bounds bounds) {
+        public static Vector3 RandomPointInBounds(Bounds bounds) 
+        {
             return new Vector3(
                 UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
                 UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
@@ -117,10 +71,7 @@ namespace Utility
 
             return result;
         }
-        
-   
 
-    
         public static float GameScreenWidth
         {
 #if UNITY_EDITOR
@@ -157,9 +108,6 @@ namespace Utility
 #endif
         }
 
-   
-    
-
         public static bool Overlaps(this RectTransform a, RectTransform b)
         { 
             var aa = a.WorldRect();
@@ -184,7 +132,8 @@ namespace Utility
             return (ul, ur, bl, br);
         }
     
-        public static Rect WorldRect(this RectTransform rectTransform) {
+        public static Rect WorldRect(this RectTransform rectTransform) 
+        {
             Vector2 sizeDelta = rectTransform.rect.size;
             float rectTransformWidth = sizeDelta.x * rectTransform.lossyScale.x;
             float rectTransformHeight = sizeDelta.y * rectTransform.lossyScale.y;
@@ -206,38 +155,6 @@ namespace Utility
             var scale = canvasRect.sizeDelta;
             return Vector3.Scale(centerBasedViewPortPosition, scale);
         }
-        //
-        // public static TweenerCore<Color, Color, ColorOptions> AlphaOut(this Graphic target, float duration, float toAlpha)
-        // {
-        //     return ChangeAlpha(target,1,toAlpha,duration).SetEase(Ease.OutSine);
-        // }
-        //
-        // public static TweenerCore<Color, Color, ColorOptions> AlphaOut(this Graphic target,float duration)
-        // {
-        //     return ChangeAlpha(target,1,0,duration).SetEase(Ease.OutSine);
-        // }
-        //
-        // public static TweenerCore<Color, Color, ColorOptions> AlphaIn(this Graphic target, float duration)
-        // {
-        //     return ChangeAlpha(target,0,1,duration).SetEase(Ease.OutSine);
-        // }
-        //
-        // public static TweenerCore<Color, Color, ColorOptions> AlphaIn(this Graphic target, float duration,float toAlpha)
-        // {
-        //     return ChangeAlpha(target,0,toAlpha,duration).SetEase(Ease.OutSine);
-        // }
-        //
-        // public static TweenerCore<Color, Color, ColorOptions> ChangeAlpha(this Graphic target, float startValue, float endValue,float duration)
-        // {
-        //     Color startColor = target.color;
-        //     startColor.a = startValue;
-        //
-        //     Color endColor = target.color;
-        //     endColor.a = endValue;
-        //
-        //     target.color = startColor;
-        //     return  target.DOColor(endColor, duration);
-        // }
     
         public static void SetAlpha(this Graphic graphic, float alpha)
         {
@@ -245,6 +162,7 @@ namespace Utility
             c.a = alpha;
             graphic.color = c;
         }
+        
         public static void SetAlpha(this SpriteRenderer target, float alpha)
         {
             var c = target.color;
@@ -258,5 +176,6 @@ namespace Utility
             array[indexFrom] = array[indexTo];
             array[indexTo] = aux;
         }
+        
     }
 }
