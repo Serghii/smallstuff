@@ -1,6 +1,6 @@
 {
 	"name": "com.smallstuff.utility",
-	"displayName": "small stuff",
+	"displayName": "Small Stuff",
 	"unity": "2018.3",
 	"version": "1.0.0",
 	"description": "IsPointerOverUIObject, GameScreen, Overlaps, Viewport/WorldToCanvasPosition, SetAlpha on Graphic, GetDescription from Enum, IList Switch, RandomPointInBounds",
